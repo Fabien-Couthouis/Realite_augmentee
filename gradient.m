@@ -1,0 +1,1 @@
+function [Gx,Gy] = gradient(I, sigmad)       filterSize = ceil(sigmad*3);    [X,Y]=meshgrid(-filterSize:filterSize);    Hx = -X.* exp( -(X.^2 + Y.^2)/(2*sigmad^2) ) / (2*pi*sigmad^4) ;    Hy = -Y .* exp( -(X.^2 + Y.^2)/(2*sigmad^2) ) / (2*pi*sigmad^4);        Gx=conv2(I,Hx,'same');    Gy=conv2(I,Hy,'same');end
